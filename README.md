@@ -31,19 +31,20 @@ The numerical experiment studies the discretization-free Greedy propagation rule
 We consider a three-community geometric hidden community model in dimension $d=2$, with $\pi=\left(\frac12,\frac3{10},\frac15\right)$, $r=3$.
 
 For $p\in[1/2,1)$, the binary observation distribution at distance $y\in[0,r]$ is
+
 $$
 P_{ab}(y)=
 \begin{cases}
-\operatorname{Ber}(p),
+\text{Ber}(p),
 & a=b,\quad y\in[0,r/3)\cup(2r/3,r],\\
-\operatorname{Ber}(1-p),
+\text{Ber}(1-p),
 & a\neq b,\quad y\in[0,r/3)\cup(2r/3,r],\\
-\operatorname{Ber}(1/2),
+\text{Ber}(1/2),
 & y\in[r/3,2r/3].
 \end{cases}
 $$
 
-For this model, $D_+(p)=\frac13\left(1-2\sqrt{p(1-p)}\right)$, $\ell=\frac r3$, and $\pi_{\mathrm{wit}}=\frac12$.
+For this model, $D_+(p)=\frac13\left(1-2\sqrt{p(1-p)}\right)$, $\ell=r/3$, and $\pi_{\mathrm{wit}}=1/2$.
 The empirical figure is therefore displayed in the $(\lambda,D_+)$ plane together with the theoretical boundaries.
 
 ## Numerical experiment
@@ -56,7 +57,7 @@ For each cell of the adaptive $(\lambda,D_+)$ grid, the notebook:
 4. applies the refinement step.
 5. records whether exact recovery is achieved.
 
-The ground-truth initialization is used to focus the experiment on the propagation step. Exact recovery is measured by $\mathbf 1\{\widehat{\sigma}=\sigma^\star\}$. A trial is successful only when every vertex is correctly labeled.
+The ground-truth initialization is used to focus the experiment on the propagation step. Exact recovery is measured by $\mathbf 1_{\{\widehat{\sigma}=\sigma^*\}}$. A trial is successful only when every vertex is correctly labeled.
 
 The grid is refined recursively near the exact-recovery boundary. In the current experiment, $n=10\,000$, the maximum refinement depth is $5$, cells along the boundary use $20$ independent trials, and the remaining cells use $10$ trials. These parameters and the random seed are collected at the end of `Figure2_EmpiricalExactRecoveryPhaseDiagram.ipynb`.
 
